@@ -1,0 +1,48 @@
+{% extends 'co/cobase.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Data table for assigned cases:</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>EXPLORER</th>
+          <th>CASE</th>
+          <th>CASE ASSIGNED</th>
+          <th>STATUS</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for dat in data %}
+        <tr>
+          <td>{{dat.user}}</td>
+          <td>{{dat.case}}</td>
+          <td>{{dat.date_assigned}}</td>
+          {% if dat.is_active == True %}
+          <td style="color:rgb(21, 6, 110)"><b>active</b></td>
+          {% else %}
+          <td style="color:rgb(238, 14, 14)"><b>danied</b></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+          <th>EXPLORER</th>
+          <th>CASE</th>
+          <th>CASE ASSIGNED</th>
+          <th>STATUS</th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+
+{% endblock content %}

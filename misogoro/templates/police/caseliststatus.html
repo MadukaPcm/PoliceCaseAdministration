@@ -1,0 +1,55 @@
+
+{% extends 'police/policebase.html' %}
+
+
+{% block content %}
+
+{% load static %}
+
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Data table for case status report:</h3>
+      {% if perms.auth.create_case %}
+      <a href="{% url 'case_url' %}" class="btn btn-primary float-right">
+        Create New Case:
+      </a>
+      {% endif %}
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>CASE_NO</th>
+            <th>DATE TIME</th>
+            <th>CONTACT</th>
+            <th>DESCRIPTION</th>
+            <th>VIEW</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for datt in dattt %}
+        <tr>
+          <td>{{datt.caseassignment}}</td>
+          <td>{{datt.datetime}}</td>
+          <td>{{datt.contact}}</td>
+          <td>{{datt.description}}</td>
+          <td><a href="{% url 'casestatusdetail_url' datt.id %}" class="fa fa-eye" title="View Case Status"></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>CASE_NO</th>
+            <th>DATE TIME</th>
+            <th>CONTACT</th>
+            <th>DESCRIPTION</th>
+            <th>VIEW</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+
+{% endblock content%}

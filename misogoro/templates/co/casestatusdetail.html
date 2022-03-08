@@ -1,0 +1,22 @@
+{% extends 'co/cobase.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form method="post" style="border: 4px; background-color:rgb(119, 119, 134); padding:10px; border-radius: 5px;">
+                {% csrf_token %}
+                <legend class="border-bottom mb-4"><h3 style="color: blue;"><b>Case Status Detail View</b></h3></legend>
+                {{ dat | crispy }}
+                <!-- <input type="reset" class="btn btn-primary btn-block mt-3 " value="Refresh"> -->
+                <a class="btn btn-warning form-control" href="{% url 'casestatus_url' %}">back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
